@@ -3,6 +3,9 @@
 // Selecionando elementos
 const diceElement = document.querySelector('.dice')
 
+const player0Element = document.querySelector('.player--0')
+const player1Element = document.querySelector('.player--1')
+
 const current0Element = document.querySelector('#current--0')
 const current1Element = document.querySelector('#current--1')
 
@@ -18,7 +21,9 @@ score0Element.textContent = 0
 score1Element.textContent = 0
 diceElement.classList.add('hidden')
 
+const scores = [0, 0]
 let currentScore = 0
+let activePlayer = 0
 
 // Funcionalidade roll do dado
 btnRoll.addEventListener('click', () => {
@@ -33,9 +38,14 @@ btnRoll.addEventListener('click', () => {
     if (dice !== 1) {
         // Adicionar o roll ao current score
         currentScore += dice
-        current0Element.textContent = currentScore
+        document.querySelector(`#current--${activePlayer}`).textContent = currentScore
 
     } else {
         // Trocar de player
+        document.querySelector(`#current--${activePlayer}`).textContent = 0
+        activePlayer = activePlayer === 0 ? 1 : 0
+        currentScore = 0
+        player0Element.classList.toggle('player--active')
+        player1Element.classList.toggle('player--active')
     }
 })
