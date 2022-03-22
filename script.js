@@ -64,7 +64,7 @@ btnHold.addEventListener('click', () => {
         document.querySelector(`#score--${activePlayer}`).textContent = scores[activePlayer]
     
         // 2. Checar se o score do player é maior ou igual a 100
-        if (scores[activePlayer] >= 20) {
+        if (scores[activePlayer] >= 100) {
             // Jogo termina
             playing = false
             diceElement.classList.add('hidden')
